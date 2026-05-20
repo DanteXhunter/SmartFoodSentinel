@@ -1,0 +1,22 @@
+services:
+  db:
+    build: .
+    container_name: supermarket_discount_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: supermarket_db
+      POSTGRES_USER: supermarket_user
+      POSTGRES_PASSWORD: supermarket_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U supermarket_user -d supermarket_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pg_data:
+    name: supermarket_pg_data

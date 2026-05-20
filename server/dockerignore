@@ -1,0 +1,18 @@
+# Git
+.git
+.gitignore
+
+# Docs
+README.md
+*.md
+
+# Editor artifacts
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Any local env files that shouldn't leak into the image
+.env
+.env.*
